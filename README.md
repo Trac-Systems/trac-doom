@@ -27,6 +27,8 @@ Mac: download & unzip and run: https://github.com/Trac-Systems/trac-doom/release
 
 All installables are signed by us!
 
+If chat or match making/joining doesn't work after the first start, please restart the app!
+
 For Linux see source install below (works also for Windows & Mac).
 
 ## Source Install Node.js and Pear
