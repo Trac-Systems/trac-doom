@@ -1,191 +1,208 @@
-# Contract Example
+# Trac Doom™
 
-Contracts on Trac Network are infrastructure. 
+A peer-to-peer Doom netplay app with smart-contract backed stats (kills, rankings, achievements).
 
-This means each participant executes contracts in distributed apps (App3: decentralized apps / embedded contracts).
+Play classic Doom™ with friends online without setting up port-forwarding. Deathmatch, Co-op supported.
 
-Alternatively a group of Peers (nodes) may accept transactions from external wallets to offer traditional web3 experiences.
+Trac Doom™ ships with Freedom 1 + 2 and allows to use your own custom WADs (maps) that are compatible with Doom1 and 
+Doom2.
 
-The most important files to check out and learn how everything works are:
+Trac Doom™ is a pure gaming experience. No financial transactions are involved.
 
-- **/contract/protocol.js**: defines the framework for the contract.
-- **/contract/contract.js**: the actual contract.
-- **/features/timer/index.js**: a Feature (aka oracle) for the contract
-- **/desktop/index.html** and **/desktop/index.js**: to learn running as App3 (see bottom notes)
-- **/index.js**: the setup for the contract app that everyone uses (the entire package represents an app)
+## Install Node.js and Pear
 
-Release 1 (R1) must be used alongside Trac Network R1 releases to maintain contract consistency.
+Node.js 22+ required:
 
-Trac Apps utilizes the [Pear Runtime and Holepunch](https://pears.com/).
-
-## Install
-
-```shell
-git clone git@github.com:Trac-Systems/trac-contract-example.git
+Windows:
+- Option 1 (installer): Download and run the Node.js 22+ installer from https://nodejs.org/
+- Option 2 (winget):
+```powershell
+winget install OpenJS.NodeJS
 ```
 
-While the Trac apps support native node-js, it is encouraged to use Pear:
+macOS:
+- Option 1 (Homebrew):
+```bash
+brew install node
+```
+- Option 2 (installer): Download the installer from https://nodejs.org/
 
-```js
-cd trac-contract-example
+Linux:
+- Option 1 (NodeSource, Debian/Ubuntu):
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+- Option 2 (nvm, any distro):
+```bash
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+nvm install 22
+nvm use 22
+```
+
+Verify Node (must be 22+):
+```bash
+node -v
+npm -v
+```
+
+Pear (v2+ required):
+```bash
 npm install -g pear
+```
+
+Check Pear version:
+```bash
+pear -v
+```
+If the version is below 2.x, upgrade Pear:
+```bash
+npm install -g pear
+```
+
+## Install & Run
+
+Option A: Run the packaged release
+
+macOS / Linux:
+```bash
+pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
+```
+
+Windows (PowerShell):
+```powershell
+pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
+```
+
+Windows (cmd):
+```cmd
+pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
+```
+
+"gamedata" will be the folder containing your identity. Please keep it at all times to preserve your achievements!
+
+## Install & Run (from source)
+
+Option B: Clone the repo and run locally
+
+macOS / Linux:
+```bash
+git clone https://github.com/Trac-Systems/trac-doom
+cd trac-doom
 npm install
-pear run . store1
+pear run . gamedata
 ```
 
-## Setup
-
-**Deploy Bootstrap (admin):**
-
-- Choose option 1)
-- Copy and backup the seedphrase
-- Copy the "Peer Writer" key from the Peer section (basically the contract address)
-- With a text editor, open the file index.js in document root
-- Replace the bootstrap address in the example section (not the MSB) with the copied writer address
-- Choose a channel name (exactly 32 characters)
-- Type /exit and hit enter, then run again: pear run . store1
-- After the options appear, type "/add_admin --address YourPeerAddress" and hit enter
-- Your instance is now the Bootstrap and admin peer of your contract network.
-- Keep your bootstrap node running
-- For production contracts, it is strongly recommended to add a couple of indexers. See below.
-
-**Running indexers (admin)**
-
-- Install on different machines than the Bootstrap's (ideally different data centers) with the exact setup in index.js
-- Upon start ("pear run . store1") copy the "Peer Writer" key
-- In the Bootstrap node screen, add the indexer: "/add_indexer --key TheIndexerWriterKey."
-- You should see a success confirmation
-- Usually 2 indexers on different locations are enough, we recommend 2 to max. 4 in addition to the Bootstrap
-
-**Enable others to join and to transact:**
-
-- By default, people cannot auto-join the contract network. The network admin (the Bootstrap in this case) can enable auto-join
-- To enable auto-join, in the screen of the Bootstrap enter "/set_auto_add_writers --enabled 1"
-- Any other Peer joining with the exact same setup can join the network and execute contract functions and transactions.
-- Users may join using the exact same setup in index.js and start using "pear run . store1"
-- For more features, play around with the available system and chat options.
-
-# App3 (Pear v2 desktop)
-- Set `"main": "index.js"` (JS entrypoint).
-- Set `pear.type` to `desktop`.
-- Run: `pear run -d . store1`
-- Wait for the app to load. `-d` opens the developer console.
-- Each desktop instance creates its own identity (wallet) automatically upon first start.
-- Note: mobile app deployment is in the works by the team.
-
-# Web3
-If your contract is not supposed to run as user-installable app, you can run it as server instead.
-There is no special setup required other than exposing the Protocol api to your services.
-
-To allow signers with webwallets to submit transactions through your server, enable the transaction API.
-For chat messages, accordingly. See below.
-
-Note: Trac Network mainnet is not released yet and there are no web wallets at this moment. 
-But you may create an identity wallet to sign off transactions for web3 apps. 
-We recommend to use the library ["micro-key-producer/slip10.js"](https://www.npmjs.com/package/micro-key-producer) package for this (using ed25519 keys).
-
-You can find all built-in api functions in trac-peer/src/api.js
-Custom api functions (per-app) can be found in /contract/protocol.js and vary by the different app projects.
-
-```js
-peer_opts.api_tx_exposed = true;
-peer_opts.api_msg_exposed = true;
+Windows (PowerShell):
+```powershell
+git clone https://github.com/Trac-Systems/trac-doom
+cd trac-doom
+npm install
+pear run . gamedata
 ```
 
+Windows (cmd):
+```cmd
+git clone https://github.com/Trac-Systems/trac-doom
+cd trac-doom
+npm install
+pear run . gamedata
+```
 
-## Doom WASM P2P Quickstart (Pear v2)
+Notes:
+- `gamedata` is the storage folder. Use a different folder per local peer.
+- `-d` opens devtools. You can omit it for normal play.
 
-Prereqs
-- Place `third_party/doom-wasm/src/doom1.wad` on every peer (sha1 must match).
-- Install Pear v2: `npm install -g pear`
-- Install deps: `npm install`
+## In‑Lobby & In‑Game Options
 
-Run model (Pear-only)
-- Desktop (Pear UI) now starts the backend automatically in the same process.
-- Terminal mode is only needed for admin/indexer commands.
-- Each running process needs its own store directory (do not reuse the same store twice).
+Lobby:
+- Nickname: Your public display name in chat and rankings.
+- Players: Connected peers (nicknames are pulled from the contract).
+- Chat: Single‑line text chat shared on the contract channel.
+- Match list: Open matches; click Join to request a slot.
+- Host game: Creates a match with the selected settings.
+- Mode: Coop / Deathmatch / Altdeath.
+- Max players: 1–4 (Doom netplay limit).
+- Map + Skill: Map selection and difficulty.
+- No monsters: Removes monsters (useful for competitive modes).
+- MAP Settings: IWAD/PWAD selection and hashes (see below).
 
-Switching between terminal and desktop (edit `package.json` before each run)
-- Terminal backend (CLI prompt):
-  - `"main": "src/main.js"`
-  - `"pear.type": "terminal"`
-- Desktop UI:
-  - `"main": "index.js"`
-  - `"pear.type": "desktop"`
+In‑game:
+- End match (host): Stops the match for everyone.
+- Leave match (joiner): Leaves before the match starts.
 
-Entrypoints (Pear v2)
-- Backend/indexer (terminal): `pear run -d . <store>`
-- Desktop UI + backend: `pear run -d . <store>`
-- Optional: `TRAC_START_PEER=0` disables backend auto-start (UI-only).
-- The entrypoint is controlled by `main` above; passing a file path here is treated as a route and will show source in desktop mode.
+## WADs & PWADs
 
-Bootstrap/admin (Pear terminal)
-- Start the bootstrap peer (terminal settings above):
-  - `TRAC_RPC_PORT=7768 TRAC_DNET_PORT=7788 pear run -d . store_bootstrap`
-- In the terminal, run:
-  - `/add_admin --address <your_public_key>`
-  - `/set_auto_add_writers --enabled 1`
-- Keep this node running.
+Terminology:
+- **IWAD**: Base game content (e.g., Doom or Freedoom).
+- **PWAD**: Add‑on content (maps, weapons, total conversions).
 
-Indexer (Pear terminal)
-- Start once to get its writer key:
-  - `TRAC_RPC_PORT=7766 pear run -d . store_indexer`
-- In the bootstrap terminal, add it:
-  - `/add_indexer --key <indexer_writer_key>`
-- Restart the indexer with the same command.
+Defaults:
+- Bundled IWADs: `doom1.wad` (Freedom1) and `doom2.wad` (Freedom2).
+- You can always host with bundled IWADs.
 
-Host (backend + UI on the same machine)
-- Switch to desktop settings and start host:
-  - `TRAC_RPC_PORT=7769 TRAC_DNET_PORT=7789 TRAC_PLAYERS=2 pear run -d . store_host`
+Custom WADs:
+- Open **MAP Settings** and set a WAD folder.
+- The app scans for `.wad` files and lists IWADs and PWADs separately.
+- Joiners must have matching file hashes for the selected IWAD/PWADs or the UI blocks the join.
 
-Joiner (backend + UI on the same machine)
-- Switch to desktop settings and start joiner:
-  - `TRAC_RPC_PORT=7770 TRAC_DNET_PORT=7790 pear run -d . store_joiner`
+## Parameters
 
-Sequence (Chocolate Doom netplay)
-- Host: click "Host Game" and wait.
-- Joiner: click "Join". The UI auto-toggles Ready after connect.
-- Host: press Space/New Game to launch for everyone.
+Common env vars:
+- `TRAC_RPC_PORT` (default `7767`) – UI RPC port.
+- `TRAC_DNET_PORT` (default `7788`) – Doom WS bridge port.
+- `TRAC_PLAYERS` (default `2`) – Max players (1–4).
+- `TRAC_SKILL` (default `3`) – Doom skill (1–5).
+- `TRAC_WAD_DIR` – Folder to scan for WAD/PWADs.
+- `TRAC_IWAD` – Default IWAD filename in the folder.
+- `TRAC_PWADS` – Comma‑separated PWAD filenames.
+- `TRAC_SOUND` (`1`/`0`) – Sound effects on/off (default on).
+- `TRAC_MUSIC` (`1`/`0`) – Music on/off (default off).
 
-Health
-- `curl http://127.0.0.1:7769/ws/info` -> `{ doomClients, metaClients, games, lastGid }`.
+Use env vars the same way for both:
+- the packaged Pear URI (`pear run ... pear://...`)
+- the local repo (`pear run ... .`)
 
-Notes
-- Admin/indexer commands only work in terminal mode (not in Pear UI).
-- Each machine should run its own local peer and UI; P2P connects them.
-- `TRAC_INTERACTIVE=1` re-enables the CLI prompt when running in desktop mode.
-- Audio uses WebAssembly threads via AudioWorklet; the UI injects `--enable-features=SharedArrayBuffer,WebAssemblyThreads`. If you see SharedArrayBuffer errors, verify you are on Pear v2 and flags are not stripped.
-- Pear v2 enforces a single on-disk instance per app directory. If a terminal peer is already running from this repo, a desktop run from the same repo will exit immediately. For local indexer+UI testing, use a second on-disk copy of the repo or run the indexer on another machine.
+macOS / Linux (packaged):
+```bash
+TRAC_RPC_PORT=7769 TRAC_DNET_PORT=7789 TRAC_PLAYERS=2 pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y store_host
+```
 
-## Doom WASM P2P Quickstart (Legacy Electron)
+macOS / Linux (local repo):
+```bash
+TRAC_RPC_PORT=7769 TRAC_DNET_PORT=7789 TRAC_PLAYERS=2 pear run . store_host
+```
 
-This project embeds Cloudflare’s Doom WASM and runs multiplayer over Trac P2P. The renderer uses the upstream WebSocket client; the Node peer proxies WS<->P2P (Hyperswarm/Protomux).
+Windows (PowerShell, packaged):
+```powershell
+$env:TRAC_RPC_PORT=7769
+$env:TRAC_DNET_PORT=7789
+$env:TRAC_PLAYERS=2
+pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y store_host
+```
 
-Prereqs
-- Place `third_party/doom-wasm/src/doom1.wad` on both peers (sha1 must match).
-- Use `ELECTRON_NOGPU=1` for the UI on this box.
+Windows (PowerShell, local repo):
+```powershell
+$env:TRAC_RPC_PORT=7769
+$env:TRAC_DNET_PORT=7789
+$env:TRAC_PLAYERS=2
+pear run . store_host
+```
 
-Start peers (example ports, one machine)
-- Indexer (optional; forwards P2P only):
-  - `TRAC_RPC_PORT=7766 node index.js store1`
-- Host peer:
-  - `TRAC_RPC_PORT=7768 TRAC_DNET_PORT=7788 node index.js store2`
-- Join peer:
-  - `TRAC_RPC_PORT=7769 TRAC_DNET_PORT=7789 node index.js store4`
+Windows (cmd, packaged):
+```cmd
+set TRAC_RPC_PORT=7769&& set TRAC_DNET_PORT=7789&& set TRAC_PLAYERS=2&& pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y store_host
+```
 
-Start UIs (each points to its own RPC)
-- Host UI: `ELECTRON_NOGPU=1 TRAC_RPC_PORT=7768 TRAC_PLAYERS=2 npm run electron:x11`
-- Join UI: `ELECTRON_NOGPU=1 TRAC_RPC_PORT=7769 npm run electron:x11`
+Windows (cmd, local repo):
+```cmd
+set TRAC_RPC_PORT=7769&& set TRAC_DNET_PORT=7789&& set TRAC_PLAYERS=2&& pear run . store_host
+```
 
-Sequence (Chocolate Doom netplay)
-- Host: click “Host Game” and wait.
-- Joiner: click “Join”. The UI auto-toggles Ready ~1.2s after connect; ensure the joiner stays listed on the host.
-- Host: press Space/New Game to launch for everyone.
+## Third‑Party Licenses
 
-Health
-- Host: `curl http://127.0.0.1:7768/ws/info` → `{ doomClients, metaClients, games, lastGid }`.
-- Renderer auto-injects `-wss ws://127.0.0.1:<dnet>/doom` based on `/info`.
+- Doom WASM (third_party/doom-wasm) is licensed under GPLv2. See `third_party/doom-wasm/COPYING.md`.
+- Freedoom IWADs (Freedom1/doom1.wad, Freedom2/doom2.wad) are from the Freedoom project and licensed under the BSD 3‑Clause. See https://freedoom.github.io/.
 
-Notes
-- Indexers skip RPC + dnet; they still forward P2P frames.
-- Multi-hop forwarding and WS keep-alives are enabled; Electron background throttling is disabled to avoid idle disconnects.
