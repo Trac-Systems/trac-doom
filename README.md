@@ -17,7 +17,7 @@ WASD + Mouse (or arrow keys + spacebar for shoot)
 
 1,2,3... for weapon switching.
 
-"F" key for fullscreen. "ESC" to minimiize.
+"F" key for fullscreen. "ESC" to minimize.
 
 ## Installation
 
