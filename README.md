@@ -21,7 +21,13 @@ WASD + Mouse (or arrow keys + spacebar for shoot)
 
 ## Installation
 
-Windows: download & install (signed app package): https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.msix 
+Windows: download & install: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.msix 
+
+Mac: download & unzip and run: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.zip
+
+All installables are signed by us!
+
+For Linux see source install below (works also for Windows & Mac).
 
 ## Source Install Node.js and Pear
 
