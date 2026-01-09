@@ -84,7 +84,7 @@ pear -v
 ```
 If the version is below 2.x, upgrade Pear:
 ```bash
-npm install -g pear
+npm install -g pear@2.0.1
 ```
 
 ## Install & Run
