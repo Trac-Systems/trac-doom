@@ -27,6 +27,9 @@ Mac: download & unzip and run: https://github.com/Trac-Systems/trac-doom/release
 
 All installables are signed by us!
 
+After first installation you may need to type the word TRUST anc confirm.
+Once done, restart the app again.
+
 If chat or match making/joining doesn't work after the first start, please restart the app!
 
 For Linux see source install below (works also for Windows & Mac).
