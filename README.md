@@ -6,7 +6,7 @@ A peer-to-peer Doom netplay app with smart-contract backed stats (kills, ranking
 
 Play classic Doom™ with friends online without setting up port-forwarding. Deathmatch, Co-op supported.
 
-Trac Doom™ ships with Freedom 1 + 2 and allows to use your own custom WADs (maps) that are compatible with Doom1 and 
+Trac Doom™ ships with Freedoom 1 + 2 and allows to use your own custom WADs (maps) that are compatible with Doom1 and 
 Doom2.
 
 Trac Doom™ is a pure gaming experience. No financial transactions are involved.
