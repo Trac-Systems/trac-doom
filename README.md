@@ -6,12 +6,35 @@ A peer-to-peer Doom netplay app with smart-contract backed stats (kills, ranking
 
 Play classic Doom™ with friends online without setting up port-forwarding. Deathmatch, Co-op supported.
 
-Trac Doom™ ships with Freedom 1 + 2 and allows to use your own custom WADs (maps) that are compatible with Doom1 and 
+Trac Doom™ ships with Freedoom 1 + 2 and allows to use your own custom WADs (maps) that are compatible with Doom1 and 
 Doom2.
 
 Trac Doom™ is a pure gaming experience. No financial transactions are involved.
 
-## Install Node.js and Pear
+## Controls
+
+WASD + Mouse (or arrow keys + spacebar for shoot)
+
+1,2,3... for weapon switching.
+
+"F" key for fullscreen. "ESC" to minimize.
+
+## Installation
+
+Windows: download & install: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.msix 
+
+Mac: download & unzip and run: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.zip
+
+All installables are signed by us!
+
+After first installation you may need to type the word TRUST anc confirm.
+Once done, restart the app again.
+
+If chat or match making/joining doesn't work after the first start, please restart the app!
+
+For Linux see source install below (works also for Windows & Mac).
+
+## Source Install Node.js and Pear
 
 Node.js 22+ required:
 
@@ -61,7 +84,7 @@ pear -v
 ```
 If the version is below 2.x, upgrade Pear:
 ```bash
-npm install -g pear
+npm install -g pear@2.0.1
 ```
 
 ## Install & Run
