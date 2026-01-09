@@ -1,5 +1,7 @@
 # Trac Doom™
 
+<img width="2541" height="1325" alt="doom" src="https://github.com/user-attachments/assets/03769092-1e68-485f-9980-de9da483a964" />
+
 A peer-to-peer Doom netplay app with smart-contract backed stats (kills, rankings, achievements).
 
 Play classic Doom™ with friends online without setting up port-forwarding. Deathmatch, Co-op supported.
