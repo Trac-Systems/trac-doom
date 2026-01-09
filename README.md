@@ -84,7 +84,7 @@ pear -v
 ```
 If the version is below 2.x, upgrade Pear:
 ```bash
-npm install -g pear@2.0.1
+pear sidecar --key pzcjqmpoo6szkoc4bpkw65ib9ctnrq7b6mneeinbhbheihaq6p6o
 ```
 
 ## Install & Run
