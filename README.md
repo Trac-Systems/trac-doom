@@ -11,7 +11,16 @@ Doom2.
 
 Trac Doom™ is a pure gaming experience. No financial transactions are involved.
 
-## Install Node.js and Pear
+## Controls
+
+WASD + Mouse (or arrow keys + spacebar for shoot)
+1,2,3... for weapon switching.
+
+## Installation
+
+Windows (signed app package): https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.msix 
+
+## Source Install Node.js and Pear
 
 Node.js 22+ required:
 
