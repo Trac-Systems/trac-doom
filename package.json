@@ -1,0 +1,41 @@
+{
+  "name": "trac-example",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "index.js",
+  "pear": {
+    "routes": ".",
+    "pre": "pear-electron/pre",
+    "name": "trac-doom",
+    "type": "desktop",
+    "gui": {
+      "backgroundColor": "#0b0f0d",
+      "height": "860",
+      "width": "1280",
+      "minHeight": "720",
+      "minWidth": "1024"
+    }
+  },
+  "scripts": {
+    "start": "pear run -d .",
+    "peer": "node src/main.js",
+    "test": "node tests/wad-utils.test.js && node tests/p2p-bridge.e2e.js && node tests/ws-bridge-direct.e2e.js && node tests/ws-bridge-relay.e2e.js"
+  },
+  "dependencies": {
+    "bare-http1": "^4.0.2",
+    "bare-url": "^2.1.6",
+    "bare-ws": "^2.0.4",
+    "compact-encoding": "^2.13.0",
+    "decode-uri-component": "^0.4.1",
+    "htm": "^3.1.1",
+    "pear-bridge": "^1.2.4",
+    "pear-electron": "^1.7.25",
+    "protomux": "^3.6.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "require-addon": "^1.2.0",
+    "trac-msb": "^0.1.82",
+    "trac-peer": "^0.2.5",
+    "ws": "^8.17.1"
+  }
+}
