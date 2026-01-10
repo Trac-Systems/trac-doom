@@ -89,8 +89,6 @@ pear sidecar --key pzcjqmpoo6szkoc4bpkw65ib9ctnrq7b6mneeinbhbheihaq6p6o
 
 ## Run
 
-Option A: Run the packaged release
-
 macOS / Linux:
 ```bash
 pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
@@ -109,8 +107,6 @@ pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
 "gamedata" will be the folder containing your identity. Please keep it at all times to preserve your achievements!
 
 ## Install & Run (from source)
-
-Option B: Clone the repo and run locally
 
 macOS / Linux:
 ```bash
