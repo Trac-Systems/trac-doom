@@ -21,7 +21,7 @@ WASD + Mouse (or arrow keys + spacebar for shoot)
 
 "E" to respawn or using objects (opening doors, etc).
 
-## Installation
+## Installation (Terminal / CMD / Powershell)
 
 Node.js 22+ required:
 
