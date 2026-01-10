@@ -34,7 +34,7 @@ If chat or match making/joining doesn't work after the first start, please resta
 
 For Linux see source install below (works also for Windows & Mac).
 
-## Source Install Node.js and Pear
+## Install Node.js and Pear
 
 Node.js 22+ required:
 
