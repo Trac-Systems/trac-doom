@@ -19,6 +19,8 @@ WASD + Mouse (or arrow keys + spacebar for shoot)
 
 "F" key for fullscreen. "ESC" to minimize.
 
+"E" to respawn or using objects (opening doors, etc).
+
 ## Auto Install
 
 Windows: download & install: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.msix 
