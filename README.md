@@ -21,21 +21,6 @@ WASD + Mouse (or arrow keys + spacebar for shoot)
 
 "E" to respawn or using objects (opening doors, etc).
 
-## Auto Install
-
-Windows: download & install: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.msix 
-
-Mac: download & unzip and run: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.zip
-
-All installables are signed by us!
-
-After first installation you may need to type the word TRUST anc confirm.
-Once done, restart the app again.
-
-If chat or match making/joining doesn't work after the first start, please restart the app!
-
-For Linux see source install below (works also for Windows & Mac).
-
 ## Manual Install
 
 Node.js 22+ required:
