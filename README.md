@@ -19,7 +19,7 @@ WASD + Mouse (or arrow keys + spacebar for shoot)
 
 "F" key for fullscreen. "ESC" to minimize.
 
-## Installation
+## Auto Install
 
 Windows: download & install: https://github.com/Trac-Systems/trac-doom/releases/download/0.1.0/TracDoom.msix 
 
@@ -34,7 +34,7 @@ If chat or match making/joining doesn't work after the first start, please resta
 
 For Linux see source install below (works also for Windows & Mac).
 
-## Install Node.js and Pear
+## Manual Install
 
 Node.js 22+ required:
 
@@ -87,7 +87,7 @@ If the version is below 2.x, upgrade Pear:
 pear sidecar --key pzcjqmpoo6szkoc4bpkw65ib9ctnrq7b6mneeinbhbheihaq6p6o
 ```
 
-## Install & Run
+## Run
 
 Option A: Run the packaged release
 
