@@ -89,18 +89,8 @@ pear sidecar --key pzcjqmpoo6szkoc4bpkw65ib9ctnrq7b6mneeinbhbheihaq6p6o
 
 ## Run
 
-macOS / Linux:
+Windows / macOS / Linux:
 ```bash
-pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
-```
-
-Windows (PowerShell):
-```powershell
-pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
-```
-
-Windows (cmd):
-```cmd
 pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
 ```
 
@@ -108,24 +98,8 @@ pear run pear://6y6ipdm9wanepy7tcii8hu1cixwbzchskwtc9pg1czjayr7f564y gamedata
 
 ## Install & Run (from source)
 
-macOS / Linux:
+Windows / macOS / Linux:
 ```bash
-git clone https://github.com/Trac-Systems/trac-doom
-cd trac-doom
-npm install
-pear run . gamedata
-```
-
-Windows (PowerShell):
-```powershell
-git clone https://github.com/Trac-Systems/trac-doom
-cd trac-doom
-npm install
-pear run . gamedata
-```
-
-Windows (cmd):
-```cmd
 git clone https://github.com/Trac-Systems/trac-doom
 cd trac-doom
 npm install
