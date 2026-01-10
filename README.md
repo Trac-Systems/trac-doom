@@ -84,7 +84,7 @@ Check Pear version:
 ```bash
 pear -v
 ```
-IMPORTANT If the version is below 2.x, upgrade Pear:
+IMPORTANT: If the Pear version is below 2.x, upgrade Pear:
 ```bash
 pear sidecar --key pzcjqmpoo6szkoc4bpkw65ib9ctnrq7b6mneeinbhbheihaq6p6o
 ```
