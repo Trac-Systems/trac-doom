@@ -84,10 +84,18 @@ Check Pear version:
 ```bash
 pear -v
 ```
-If the version is below 2.x, upgrade Pear:
+IMPORTANT If the version is below 2.x, upgrade Pear:
 ```bash
 pear sidecar --key pzcjqmpoo6szkoc4bpkw65ib9ctnrq7b6mneeinbhbheihaq6p6o
 ```
+
+This can take a while, let it finish and check the version again:
+```bash
+pear -v
+```
+
+Must return something like SemVer=2.2.6
+
 
 ## Run
 
