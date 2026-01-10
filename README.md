@@ -21,7 +21,7 @@ WASD + Mouse (or arrow keys + spacebar for shoot)
 
 "E" to respawn or using objects (opening doors, etc).
 
-## Manual Install
+## Installation
 
 Node.js 22+ required:
 
@@ -80,7 +80,6 @@ pear -v
 ```
 
 Must return something like SemVer=2.2.6
-
 
 ## Run
 
